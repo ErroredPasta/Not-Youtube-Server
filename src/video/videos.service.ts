@@ -4,9 +4,9 @@ import { VideosRepository } from './videos.repository';
 
 @Injectable()
 export class VideosService {
-  constructor(private repository: VideosRepository) {}
+    constructor(private repository: VideosRepository) {}
 
-  getVideos(): Video[] {
-    return this.repository.getVideos();
-  }
+    getVideos(): Video[] {
+        return this.repository.getVideos();
+    }
 }

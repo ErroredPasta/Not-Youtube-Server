@@ -4,10 +4,10 @@ import { Video } from './video.entity';
 
 @Controller('videos')
 export class VideosController {
-  constructor(private service: VideosService) {}
+    constructor(private service: VideosService) {}
 
-  @Get()
-  getVideos(): Video[] {
-    return this.service.getVideos();
-  }
+    @Get()
+    getVideos(): Video[] {
+        return this.service.getVideos();
+    }
 }

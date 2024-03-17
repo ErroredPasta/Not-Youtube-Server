@@ -4,7 +4,7 @@ import { VideosService } from './videos.service';
 import { VideosRepository } from './videos.repository';
 
 @Module({
-  controllers: [VideosController],
-  providers: [VideosService, VideosRepository],
+    controllers: [VideosController],
+    providers: [VideosService, VideosRepository],
 })
 export class VideosModule {}
