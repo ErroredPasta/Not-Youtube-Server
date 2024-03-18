@@ -1,10 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { Video } from './video.entity';
+import { VideoDetail } from './video-detail.entity';
 
 @Injectable()
 export class VideosRepository {
     getVideos(): Video[] {
         return VIDEOS;
+    }
+
+    getVideoDetailById(id: string): VideoDetail {
+        const index = VIDEOS.findIndex((value, _index, _obj) => {
+            return value.id === id;
+        });
+
+        const videoItem = VIDEOS[index];
+
+        return new VideoDetail(
+            videoItem.id,
+            VIDEO_URLS[index],
+            videoItem.title,
+            videoItem.view,
+            videoItem.dateTime,
+            videoItem.channelName,
+            videoItem.channelThumbnail,
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultricies ultrices imperdiet. Duis eget tortor ut erat suscipit gravida. In ex enim, laoreet vitae nisl faucibus, laoreet ullamcorper ex. Praesent vehicula laoreet efficitur. Integer aliquet odio ac ante congue varius. Donec facilisis mauris non neque ornare, in viverra velit fermentum. Nam dictum metus ac orci egestas, ut consectetur quam dapibus. Maecenas efficitur blandit finibus. Sed dignissim dolor risus, sit amet elementum tortor viverra quis. Praesent quis gravida augue, id bibendum nulla.',
+        );
     }
 }
 

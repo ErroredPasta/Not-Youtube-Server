@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Video } from './video.entity';
 import { VideosRepository } from './videos.repository';
+import { VideoDetail } from './video-detail.entity';
 
 @Injectable()
 export class VideosService {
@@ -8,5 +9,9 @@ export class VideosService {
 
     getVideos(): Video[] {
         return this.repository.getVideos();
+    }
+
+    getVideoDetailById(id: string): VideoDetail {
+        return this.repository.getVideoDetailById(id);
     }
 }
