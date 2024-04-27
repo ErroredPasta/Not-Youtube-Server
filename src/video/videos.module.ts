@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { VideosController as VideosController } from './videos.controller';
 import { VideosService } from './videos.service';
-import { VideosRepository } from './videos.repository';
+import { inmemoryRepositoryProvider } from './repository/videos.in-memory-repository';
 
 @Module({
     controllers: [VideosController],
-    providers: [VideosService, VideosRepository],
+    providers: [VideosService, inmemoryRepositoryProvider],
 })
 export class VideosModule {}

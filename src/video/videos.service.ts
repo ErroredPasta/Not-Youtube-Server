@@ -1,11 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Video } from './video.entity';
-import { VideosRepository } from './videos.repository';
 import { VideoDetail } from './video-detail.entity';
+import { RepositoryType, VideosRepository } from './repository/videos.repository';
 
 @Injectable()
 export class VideosService {
-    constructor(private repository: VideosRepository) {}
+    constructor(
+        @Inject(RepositoryType.IN_MEMORY.toString())
+        private repository: VideosRepository,
+    ) {}
 
     getVideos(): Video[] {
         return this.repository.getVideos();

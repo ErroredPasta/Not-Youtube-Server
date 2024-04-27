@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { Video } from './video.entity';
-import { VideoDetail } from './video-detail.entity';
+import { Injectable, Provider } from '@nestjs/common';
+import { Video } from '../video.entity';
+import { VideoDetail } from '../video-detail.entity';
+import { RepositoryType, VideosRepository } from './videos.repository';
 
 @Injectable()
-export class VideosRepository {
+export class InMemoryVideosRepository implements VideosRepository {
     getVideos(): Video[] {
         return VIDEOS;
     }
@@ -189,3 +190,9 @@ const VIDEO_URLS = [
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4',
 ];
+
+export const inmemoryRepositoryProvider = {
+    provide: RepositoryType.IN_MEMORY.toString(),
+    useClass: InMemoryVideosRepository,
+};
+
