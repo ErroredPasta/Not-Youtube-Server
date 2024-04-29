@@ -8,12 +8,12 @@ export class VideosController {
     constructor(private service: VideosService) {}
 
     @Get()
-    getVideos(): Video[] {
+    getVideos(): Promise<Video[]> {
         return this.service.getVideos();
     }
 
     @Get('/:id')
-    getVideoDetailById(@Param('id') id: string): VideoDetail {
+    getVideoDetailById(@Param('id') id: string): Promise<VideoDetail> {
         return this.service.getVideoDetailById(id);
     }
 }

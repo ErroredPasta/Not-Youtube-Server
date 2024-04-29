@@ -6,15 +6,15 @@ import { RepositoryType, VideosRepository } from './repository/videos.repository
 @Injectable()
 export class VideosService {
     constructor(
-        @Inject(RepositoryType.IN_MEMORY.toString())
+        @Inject(RepositoryType.DATABASE.toString())
         private repository: VideosRepository,
     ) {}
 
-    getVideos(): Video[] {
+    async getVideos(): Promise<Video[]> {
         return this.repository.getVideos();
     }
 
-    getVideoDetailById(id: string): VideoDetail {
+    async getVideoDetailById(id: string): Promise<VideoDetail> {
         return this.repository.getVideoDetailById(id);
     }
 }

@@ -1,14 +1,34 @@
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity({name: 'video'})
 export class VideoDetail {
-    constructor(
-        public id: string,
-        public thumbnail: string,
-        public videoUrl: string,
-        public title: string,
-        public view: number,
-        public dateTime: string,
-        public channelName: string,
-        public channelThumbnail: string,
-        public length: number,
-        public description: string,
-    ) {}
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
+
+    @Column()
+    videoUrl: string;
+
+    @Column()
+    thumbnail: string;
+    
+    @Column()
+    title: string;
+    
+    @Column()
+    channelName: string;
+    
+    @Column()
+    channelThumbnail: string;
+
+    @Column()
+    view: number;
+
+    @Column()
+    dateTime: string;
+    
+    @Column()
+    description: string;
+
+    @Column()
+    length: number;
 }

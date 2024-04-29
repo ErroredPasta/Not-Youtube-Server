@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { VideosController as VideosController } from './videos.controller';
 import { VideosService } from './videos.service';
-import { inmemoryRepositoryProvider } from './repository/videos.in-memory-repository';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { VideoDetail } from './video-detail.entity';
+import { databaseRepositoryProvider } from './repository/videos.repository-impl';
 
 @Module({
+    imports: [TypeOrmModule.forFeature([VideoDetail])],
     controllers: [VideosController],
-    providers: [VideosService, inmemoryRepositoryProvider],
+    providers: [VideosService, databaseRepositoryProvider],
 })
 export class VideosModule {}
